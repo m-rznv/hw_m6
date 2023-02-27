@@ -6,17 +6,19 @@ def connection():
     conn = None
     try:
         conn = connect(
-            host="localhost",
-            database="postgres",
-            user="postgres",
-            password="567432"
+            host='localhost',
+            database='postgres',
+            user='postgres',
+            password='567432'
         )
         yield conn
         conn.commit()
 
-    except Error as e:
-        print(e)
+    except Error as err:
+        print(err)
         conn.rollback()
+         
     finally:
         if conn:
             conn.close()
+        
